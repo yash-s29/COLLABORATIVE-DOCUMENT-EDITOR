@@ -1,3 +1,5 @@
+require("dotenv").config(); // Load environment variables
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -6,10 +8,11 @@ const http = require("http");
 const { v4: uuidv4 } = require("uuid");
 const Document = require("./models/Document");
 
+const PORT = process.env.PORT || 4000;
+const MONGO_URI = process.env.MONGO_URI;
+
 const app = express();
 const server = http.createServer(app);
-const PORT = 4000;
-const MONGO_URI = "mongodb+srv://dbpoker:yp29s$@cluster029.cwdkrt8.mongodb.net/docs-editor?retryWrites=true&w=majority";
 
 // === Default empty Quill content ===
 const defaultValue = { ops: [{ insert: "\n" }] };
