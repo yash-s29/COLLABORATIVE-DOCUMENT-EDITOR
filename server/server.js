@@ -8,8 +8,6 @@ const Document = require("./models/Document");
 
 const app = express();
 const server = http.createServer(app);
-const PORT = 4000;
-const MONGO_URI = "mongodb+srv://dbpoker:yp29s$@cluster029.cwdkrt8.mongodb.net/docs-editor?retryWrites=true&w=majority";
 
 // === Default empty Quill content ===
 const defaultValue = { ops: [{ insert: "\n" }] };
