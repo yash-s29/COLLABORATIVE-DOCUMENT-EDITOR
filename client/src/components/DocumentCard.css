@@ -1,0 +1,126 @@
+.document-card {
+  background: #ffffff;
+  padding: 1.8rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #e4e4e4;
+  width: 100%;
+  max-width: 360px;
+  margin: 1.2rem auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.document-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.document-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.6rem;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.last-edited {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 1.2rem;
+}
+
+/* Actions */
+.document-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+
+.open-button,
+.delete-button {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.open-button {
+  background-color: #4a6cf7;
+  color: #ffffff;
+}
+
+.open-button:hover {
+  background-color: #3a57db;
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* Optional icon styles if using icons */
+.document-icon {
+  font-size: 1.4rem;
+  color: #4a6cf7;
+  margin-right: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .document-card {
+    padding: 1.2rem;
+    margin: 1rem;
+  }
+
+  .document-title {
+    font-size: 1.2rem;
+  }
+
+  .last-edited {
+    font-size: 0.85rem;
+  }
+
+  .open-button,
+  .delete-button {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .document-actions {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .open-button,
+  .delete-button {
+    width: 100%;
+  }
+}
