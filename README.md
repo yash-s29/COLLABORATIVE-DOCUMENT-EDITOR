@@ -56,7 +56,6 @@ COLLABORATIVE-DOCUMENT-EDITOR/
 
 ### ⚙️ 1. Clone the repository
 
-```bash
 git clone https://github.com/yash-s29/COLLABORATIVE-DOCUMENT-EDITOR.git
 cd COLLABORATIVE-DOCUMENT-EDITOR
 
