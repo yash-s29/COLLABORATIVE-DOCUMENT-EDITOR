@@ -12,7 +12,6 @@
   --danger-dark: #dc2626;
 }
 
-/* Global */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -20,7 +19,6 @@ body {
   color: var(--text-dark);
 }
 
-/* Dashboard Layout */
 .dashboard {
   padding: 2.5rem 1.5rem;
   max-width: 1200px;
@@ -42,7 +40,6 @@ body {
   color: var(--text-dark);
 }
 
-/* New Document Button */
 .new-doc-btn {
   background-color: var(--primary);
   color: #fff;
@@ -61,15 +58,11 @@ body {
 .new-doc-btn:hover {
   background-color: var(--primary-light);
 }
-
-/* Document Grid */
 .document-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.8rem;
 }
-
-/* Card Styles */
 .document-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border);
@@ -83,8 +76,6 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
-
-/* Document Title */
 .doc-title {
   font-size: 1.25rem;
   font-weight: 600;
@@ -95,8 +86,6 @@ body {
   margin-bottom: 0.75rem;
   cursor: pointer;
 }
-
-/* Timestamps */
 .timestamp {
   font-size: 0.9rem;
   color: var(--text-light);
@@ -105,8 +94,6 @@ body {
   align-items: center;
   gap: 6px;
 }
-
-/* Actions */
 .doc-actions {
   margin-top: 1rem;
   display: flex;
@@ -143,8 +130,6 @@ body {
 .btn.delete:hover {
   background-color: var(--danger-dark);
 }
-
-/* Status messages */
 .status-msg {
   text-align: center;
   font-size: 1rem;
@@ -155,8 +140,6 @@ body {
 .status-msg.error {
   color: var(--danger);
 }
-
-/* Responsive Adjustments */
 @media (max-width: 600px) {
   .dashboard-header {
     flex-direction: column;
