@@ -11,8 +11,6 @@
   --radius: 8px;
   --transition: 0.3s ease;
 }
-
-/* HEADER CONTAINER */
 .header-bar {
   background-color: var(--primary);
   color: var(--light);
@@ -24,24 +22,18 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   animation: fadeInDown 0.5s ease;
 }
-
-/* LOGO TEXT */
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
   margin: 0;
   letter-spacing: 1px;
 }
-
-/* NAVIGATION BUTTONS WRAPPER */
 .nav-buttons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }
-
-/* BASE BUTTON STYLING */
 .nav-btn {
   padding: 0.6rem 1.2rem;
   background-color: var(--secondary);
@@ -53,30 +45,22 @@
   font-weight: 500;
   transition: background-color var(--transition), transform 0.2s ease;
 }
-
-/* HOVER EFFECT FOR ALL NAV BUTTONS */
 .nav-btn:hover {
   background-color: var(--accent);
   transform: translateY(-2px);
 }
-
-/* BACK HOME BUTTON STYLE */
 .back-home {
   background-color: var(--success);
 }
 .back-home:hover {
   background-color: var(--success-hover);
 }
-
-/* LOGOUT BUTTON STYLE */
 .logout-btn {
   background-color: var(--danger);
 }
 .logout-btn:hover {
   background-color: var(--danger-hover);
 }
-
-/* RESPONSIVE DESIGN */
 @media (max-width: 600px) {
   .header-bar {
     flex-direction: column;
@@ -97,7 +81,6 @@
   }
 }
 
-/* FADE-IN ANIMATION */
 @keyframes fadeInDown {
   from {
     opacity: 0;
