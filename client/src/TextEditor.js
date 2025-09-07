@@ -31,14 +31,12 @@ export default function TextEditor() {
   const [title, setTitle] = useState("Untitled");
   const [darkMode, setDarkMode] = useState(false);
 
-  // Establish socket connection
   useEffect(() => {
     const s = io("http://localhost:4000");
     setSocket(s);
     return () => s.disconnect();
   }, []);
 
-  // Setup Quill editor
   const wrapperRef = useCallback((wrapper) => {
     if (!wrapper) return;
     wrapper.innerHTML = "";
@@ -53,7 +51,6 @@ export default function TextEditor() {
     setQuill(q);
   }, []);
 
-  // Load document content
   useEffect(() => {
     if (!quill) return;
     const loadDocument = async () => {
@@ -72,7 +69,6 @@ export default function TextEditor() {
     loadDocument();
   }, [docId, quill, navigate]);
 
-  // Receive document from socket
   useEffect(() => {
     if (!socket || !quill) return;
     socket.emit("get-document", docId);
@@ -84,7 +80,6 @@ export default function TextEditor() {
     });
   }, [socket, quill, docId]);
 
-  // Send changes to socket
   useEffect(() => {
     if (!socket || !quill) return;
     const sendHandler = (delta, _, source) => {
@@ -96,7 +91,6 @@ export default function TextEditor() {
     return () => quill.off("text-change", sendHandler);
   }, [socket, quill]);
 
-  // Receive changes from socket
   useEffect(() => {
     if (!socket || !quill) return;
     const receiveHandler = (delta) => quill.updateContents(delta);
@@ -104,7 +98,6 @@ export default function TextEditor() {
     return () => socket.off("receive-changes", receiveHandler);
   }, [socket, quill]);
 
-  // Auto-save every 2 seconds
   useEffect(() => {
     if (!quill || !title) return;
     const interval = setInterval(async () => {
@@ -123,7 +116,6 @@ export default function TextEditor() {
     return () => clearInterval(interval);
   }, [quill, title, socket, docId]);
 
-  // Export as PDF (Ctrl + S)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "s") {
@@ -140,7 +132,6 @@ export default function TextEditor() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [quill, title]);
 
-  // Export as DOCX
   const handleDocxDownload = () => {
     if (!quill) return;
     const content = quill.getText();
