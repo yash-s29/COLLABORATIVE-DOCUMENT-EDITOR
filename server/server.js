@@ -1,5 +1,4 @@
-require("dotenv").config(); // Load environment variables
-
+require("dotenv").config(); 
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -14,14 +13,11 @@ const MONGO_URI = process.env.MONGO_URI;
 const app = express();
 const server = http.createServer(app);
 
-// === Default empty Quill content ===
 const defaultValue = { ops: [{ insert: "\n" }] };
 
-// === Middleware ===
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
-// === MongoDB Connection ===
 mongoose.set("strictQuery", true);
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -30,7 +26,6 @@ mongoose.connect(MONGO_URI, {
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ MongoDB error:", err));
 
-// === Socket.io Setup ===
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -65,7 +60,6 @@ io.on("connection", socket => {
   });
 });
 
-// === Utility Function ===
 async function findOrCreateDocument(id) {
   if (!id) return null;
 
@@ -79,9 +73,6 @@ async function findOrCreateDocument(id) {
   });
 }
 
-// === REST API ===
-
-// GET all documents
 app.get("/api/documents", async (req, res) => {
   try {
     const docs = await Document.find().sort({ updatedAt: -1 });
@@ -92,7 +83,6 @@ app.get("/api/documents", async (req, res) => {
   }
 });
 
-// GET single document
 app.get("/api/documents/:id", async (req, res) => {
   try {
     const doc = await Document.findById(req.params.id);
@@ -104,7 +94,6 @@ app.get("/api/documents/:id", async (req, res) => {
   }
 });
 
-// POST create a new document
 app.post("/api/documents", async (req, res) => {
   const { title, content = defaultValue } = req.body;
 
@@ -127,7 +116,6 @@ app.post("/api/documents", async (req, res) => {
   }
 });
 
-// PUT update document
 app.put("/api/documents/:id", async (req, res) => {
   const { title, content } = req.body;
 
@@ -149,7 +137,6 @@ app.put("/api/documents/:id", async (req, res) => {
   }
 });
 
-// DELETE document
 app.delete("/api/documents/:id", async (req, res) => {
   try {
     const deleted = await Document.findByIdAndDelete(req.params.id);
@@ -161,7 +148,6 @@ app.delete("/api/documents/:id", async (req, res) => {
   }
 });
 
-// === Start Server ===
 server.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
